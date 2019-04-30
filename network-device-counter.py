@@ -3,12 +3,12 @@ from influxdb import InfluxDBClient
 from datetime import datetime
 import re
 from time import sleep
-import pprint
+#import pprint
 
 dbhost = "localhost"
 dbport = "8086"
 arpRegex = "(?:hosts\/sec).(.*)"
-pp = pprint.PrettyPrinter()
+#pp = pprint.PrettyPrinter()
 
 influxClient = InfluxDBClient(host=dbhost, port=dbport)
 
@@ -33,6 +33,6 @@ while True:
             }
         }
     ]
-    pp.pprint(json_body)
-    #client.write_points(json_body)
+    #pp.pprint(json_body)
+    influxClient.write_points(json_body)
     sleep(5)
